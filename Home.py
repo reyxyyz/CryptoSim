@@ -16,3 +16,15 @@ Navigasi di sidebar untuk:
 
 **Dibuat untuk Tugas UAS - Pemrograman Kriptografi**
 """)
+
+st.markdown("""
+### 📄 Navigasi Halaman
+
+Pilih halaman di sidebar (kiri layar):
+- **Caesar Cipher**  → Enkripsi/Dekripsi dengan pergeseran huruf
+- **Vigenère Cipher** → Enkripsi dengan kata kunci
+- **RSA Encryption** → Enkripsi menggunakan kunci publik/pribadi
+- **Perbandingan Algoritma** → Bandingkan kekuatan & kecepatan
+
+Selamat bereksplorasi! 🔐✨
+""")
