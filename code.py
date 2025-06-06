@@ -242,16 +242,28 @@ elif selected == "ROT13":
             st.success(f"Hasil: {hasil}")
 
 elif selected == "XOR Cipher":
-    st.title("❌ XOR Cipher")
-    st.write("XOR Cipher mengenkripsi teks menggunakan operasi XOR dengan kunci karakter tunggal.")
-    text = st.text_input("Masukkan teks:", placeholder="Halo Dunia")
-    key = st.text_input("Masukkan kunci (1 karakter):", max_chars=1)
+    st.title("🛡️ XOR Cipher")
+    mode = st.radio("Pilih Mode:", ["Enkripsi", "Dekripsi"])
+    text = st.text_input("Masukkan teks:")
+    key = st.text_input("Masukkan kunci:")
+
     if st.button("Proses"):
-        if not text or not key:
-            st.warning("Masukkan teks dan kunci terlebih dahulu!")
+        if not key:
+            st.error("Kunci tidak boleh kosong!")
         else:
             hasil = xor_cipher(text, key)
-            st.success(f"Hasil: {hasil}")
+            if mode == "Enkripsi":
+                # Untuk enkripsi, tampilkan dalam format hexadecimal agar bisa dibaca
+                hasil_hex = hasil.encode().hex()
+                st.success(f"Hasil Enkripsi (hex): {hasil_hex}")
+            else:
+                try:
+                    # Coba decode dari hex
+                    decoded_text = bytes.fromhex(text).decode()
+                    hasil = xor_cipher(decoded_text, key)
+                    st.success(f"Hasil Dekripsi: {hasil}")
+                except:
+                    st.error("Teks yang dimasukkan harus dalam format hex hasil enkripsi!")
 
 elif selected == "Vigenère Cipher":
     st.title("🔑 Vigenère Cipher")
