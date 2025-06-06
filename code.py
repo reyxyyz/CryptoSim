@@ -107,10 +107,14 @@ def substitution_cipher(text, key, mode):
             result += c
     return result
 
-def rot13(text):
-  elif selected == "ROT13":
+def rot13(text, mode):
+    # ROT13 sama untuk enkripsi dan dekripsi
+    return caesar_cipher(text, 13, mode)
+
+# Bagian UI di Streamlit
+elif selected == "ROT13":
     st.title("🔄 ROT13")
-    st.write("ROT13 adalah Caesar Cipher dengan pergeseran 13, digunakan untuk 'membalik' teks.")
+    st.write("ROT13 adalah Caesar Cipher dengan pergeseran 13, enkripsi dan dekripsinya sama.")
     text = st.text_input("Masukkan teks:", placeholder="Halo Dunia")
     mode = st.radio("Mode:", ["Enkripsi", "Dekripsi"])
     if st.button("Proses"):
