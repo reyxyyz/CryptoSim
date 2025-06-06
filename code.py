@@ -108,7 +108,17 @@ def substitution_cipher(text, key, mode):
     return result
 
 def rot13(text):
-    return caesar_cipher(text, 13, "Enkripsi")
+  elif selected == "ROT13":
+    st.title("🔄 ROT13")
+    st.write("ROT13 adalah Caesar Cipher dengan pergeseran 13, digunakan untuk 'membalik' teks.")
+    text = st.text_input("Masukkan teks:", placeholder="Halo Dunia")
+    mode = st.radio("Mode:", ["Enkripsi", "Dekripsi"])
+    if st.button("Proses"):
+        if not text:
+            st.warning("Masukkan teks terlebih dahulu!")
+        else:
+            hasil = rot13(text, mode)
+            st.success(f"Hasil: {hasil}")
 
 def xor_cipher(text, key):
     key_ord = ord(key) if key else 0
